@@ -1,61 +1,112 @@
-# Deployment Guide
+# Deployment Guide – Tina's Cake Haven
 
-## Live domain
+## 1. Live Website
 
-The correct public URL is:
+**Production URL:** https://tinascakehaven.noscamcoin.org/
 
-[https://tinascakehaven.noscamcoin.org](https://tinascakehaven.noscamcoin.org)
+Tina's Cake Haven is deployed as a WordPress website and is publicly accessible through the production domain.
 
-## Hosting environment
+## 2. Hosting Environment
 
-Live response evidence:
+The following information has been observed from the live website:
 
-- HTTP status: 200
-- Server: LiteSpeed
-- PHP: 8.2.36
-- HTTPS: enabled
-- HSTS: enabled
-- Exact provider, control-panel account, web root and database host require hosting-dashboard confirmation.
+| Item | Verified information |
+|---|---|
+| Web server | LiteSpeed |
+| PHP version | 8.2.36 |
+| HTTPS | Enabled |
+| HTTP response | 200 OK |
+| HSTS | Enabled |
+| Website platform | WordPress |
 
-## DNS and document root
+The exact hosting provider, cPanel account details, document root and database hostname must be confirmed through the authorized hosting dashboard.
 
-The domain DNS must resolve to the authorized hosting server. The WordPress document root must contain the project files and serve WordPress index routing.
+No passwords, database credentials or hosting account secrets should be stored in this document or the public GitHub repository.
 
-Apache/LiteSpeed-compatible `.htaccess` rules in the project:
+## 3. DNS and Document Root Configuration
 
-- Force HTTPS for public requests.
-- Deny directory listing.
-- Protect sensitive files.
-- Disable XML-RPC.
-- Enable browser caching and compression.
-- Route WordPress permalinks.
+The production domain must resolve to the authorized hosting server.
 
-The local `RewriteBase /tinas-cake-haven/` rule is local-project evidence and must be verified before a live deployment to avoid assuming the live root is `/tinas-cake-haven/`. The live domain should use the authorized live document root.
+The hosting document root must contain the WordPress installation files and correctly serve the website's homepage and permalink routes.
 
-## SSL/HTTPS
+The project uses Apache/LiteSpeed-compatible `.htaccess` configuration for:
 
-Maintain a valid certificate for the exact domain. HTTPS enforcement must account for reverse-proxy headers such as `X-Forwarded-Proto`. Do not disable security headers without an approved replacement.
+- HTTPS redirection.
+- Directory listing protection.
+- Sensitive file protection.
+- XML-RPC restrictions.
+- Browser caching and compression.
+- WordPress permalink routing.
 
-## Deployment process
+The local WAMP installation uses a project-specific rewrite context:
 
-The deployment process should be performed by an authorized maintainer:
+`RewriteBase /tinas-cake-haven/`
 
-1. Create a full WordPress and database backup.
-2. Confirm the source release and diff.
-3. Place files in the live document root through the authorized hosting method.
-4. Preserve `wp-content/themes/tinas-cake-haven/` and `wp-content/plugins/tinas-cake-haven-core/`.
-5. Preserve `wp-content/uploads/` and private upload permissions.
-6. Confirm database credentials and hostname in `wp-config.php` without displaying secrets.
-7. Confirm WordPress `home` and `siteurl` options match the live HTTPS domain.
-8. Clear only authorized caches/backups.
-9. Verify core, theme and plugin versions.
-10. Run the post-deployment checks below.
+This local configuration must not automatically be assumed to apply to the production domain. The live rewrite configuration must correspond to the actual hosting document root.
 
-Do not use local URL search-and-replace or database migration tools unless explicitly authorized.
+## 4. SSL Certificate and HTTPS
 
-## Database configuration
+The production website uses HTTPS.
 
-Use placeholders and hosting-provided secret values:
+Deployment and maintenance should ensure that:
+
+- The SSL certificate is valid for the exact production hostname.
+- HTTP requests redirect to HTTPS.
+- HTTPS pages do not load insecure HTTP resources.
+- Security headers remain correctly configured.
+- Certificate renewal is monitored through the hosting provider.
+
+Where a reverse proxy is used, HTTPS detection must be configured correctly without trusting arbitrary forwarded headers.
+
+## 5. Deployment Prerequisites
+
+An authorized maintainer should have:
+
+- Access to the hosting control panel.
+- Access to the production database through an authorized method.
+- A verified copy of the project source.
+- A complete and recoverable backup.
+- The required WordPress, PHP and database compatibility.
+- Access to the domain DNS configuration where changes are necessary.
+
+The project requires WordPress 6.5 or newer and PHP 8.0 or newer according to its custom plugin requirements.
+
+## 6. Deployment Procedure
+
+The following procedure describes the recommended process for deploying a project update.
+
+1. Create a backup of the existing WordPress files and database.
+2. Confirm the source-code version and review the changes being deployed.
+3. Confirm that the deployment package excludes development credentials, temporary files and unnecessary backups.
+4. Upload the authorized WordPress project files to the correct production document root.
+5. Preserve the custom theme:
+
+   `wp-content/themes/tinas-cake-haven/`
+
+6. Preserve the custom plugin:
+
+   `wp-content/plugins/tinas-cake-haven-core/`
+
+7. Preserve existing media and uploads:
+
+   `wp-content/uploads/`
+
+8. Confirm that `wp-config.php` contains the correct production database configuration without exposing its contents.
+9. Confirm that WordPress `home` and `siteurl` settings use the production HTTPS domain.
+10. Confirm that the `.htaccess` rules are appropriate for the live hosting environment.
+11. Clear only the relevant authorized caches.
+12. Verify that WordPress core, theme and plugin files are functioning correctly.
+13. Perform the post-deployment verification checks in Section 10.
+
+Existing customer records, orders, payment records and business settings must be preserved.
+
+Database migrations, URL replacement operations and destructive changes must only be performed after authorization and a verified backup.
+
+## 7. Database Configuration
+
+WordPress uses MySQL-compatible database configuration.
+
+The following placeholders illustrate the required configuration values:
 
 ```text
 DB_NAME=<authorized_database_name>
@@ -64,37 +115,143 @@ DB_PASSWORD=<authorized_database_password>
 DB_HOST=<authorized_database_host>
 ```
 
-The database account should have only the permissions required by WordPress and the custom plugin.
+The actual values must be obtained from the authorized hosting provider.
 
-## Backup and restoration
+Security requirements:
 
-UpdraftPlus source is present, but schedule and destination are unverified.
+- Never publish real database credentials.
+- Never commit `wp-config.php` to the public repository.
+- Use a dedicated database account.
+- Grant only the permissions required by WordPress and the custom plugin.
+- Restrict access to database administration tools.
 
-Before deployment:
+The project uses standard WordPress database tables and additional custom tables for business operations.
 
-- Back up WordPress files.
-- Back up MySQL/MariaDB.
-- Preserve uploads and private upload evidence.
-- Record plugin/theme/core versions.
-- Keep database credentials outside the backup or repository.
+## 8. Backup and Restoration
 
-After changes:
+UpdraftPlus is present in the project environment. However, the actual backup schedule, destination and successful restoration status must be verified through the hosting dashboard.
 
-- Restore to a controlled staging environment first.
-- Confirm custom tables and WordPress records.
-- Verify private uploads and permissions.
-- Document the restore test result.
+Recommended backup procedure:
 
-## Post-deployment verification
+1. Back up the complete WordPress installation.
+2. Export the production MySQL/MariaDB database.
+3. Preserve uploaded media and private application files.
+4. Record the WordPress, theme and plugin versions.
+5. Store backups in a secure location separate from the public repository.
+6. Restrict access to backup files because they may contain customer information.
 
-- Open the live homepage.
-- Check HTTP-to-HTTPS redirects.
-- Check products and a product category.
-- Check order, custom-cake, account and tracking page URLs.
-- Check security headers.
-- Review the browser console and server error log.
-- Verify WordPress cron and scheduled backups.
-- Confirm Wordfence and UpdraftPlus status.
-- Confirm contact and order notification delivery.
-- Do not submit real orders or payments for testing.
+### Restoration procedure
 
+If restoration becomes necessary:
+
+1. Identify the failure and select the appropriate verified backup.
+2. Restore files and database in a controlled environment where possible.
+3. Confirm database tables and relationships.
+4. Verify the theme and custom plugin.
+5. Check uploaded media and file permissions.
+6. Verify customer accounts, orders and payment records.
+7. Confirm the website works before returning it to normal operation.
+
+A restoration procedure should be periodically tested. Do not claim a successful restoration until an actual test has been completed and documented.
+
+## 9. Rollback Procedure
+
+If a deployment causes serious errors:
+
+1. Stop further deployment changes.
+2. Record the observed error and affected functionality.
+3. Notify the authorized website administrator.
+4. Restore the previous verified application files if necessary.
+5. Restore the matching database backup if database changes caused the problem.
+6. Verify the homepage, products, accounts and order functionality.
+7. Confirm HTTPS and security protections.
+8. Document the incident and corrective action.
+
+Never restore an older database over newer customer records without assessing the consequences.
+
+## 10. Post-Deployment Verification
+
+After deployment, perform the following checks:
+
+### General website checks
+
+- [ ] Open the production homepage.
+- [ ] Confirm the website loads over HTTPS.
+- [ ] Verify HTTP-to-HTTPS redirection.
+- [ ] Check the main navigation and footer.
+- [ ] Check the homepage hero slider.
+- [ ] Verify responsive display on desktop and mobile.
+
+### Product and ordering checks
+
+- [ ] Open the product catalogue.
+- [ ] Open product categories and individual products.
+- [ ] Check the standard order form.
+- [ ] Check the customized birthday-cake request form.
+- [ ] Verify order pricing is calculated on the server.
+- [ ] Confirm the delivery and collection information displays correctly.
+
+### Customer account checks
+
+- [ ] Verify customer registration and login pages.
+- [ ] Check the customer account page.
+- [ ] Check order history.
+- [ ] Check guest order tracking.
+- [ ] Confirm private customer pages are not publicly cached.
+
+### Administrative checks
+
+- [ ] Verify authorized staff access.
+- [ ] Check order management.
+- [ ] Check payment verification functionality.
+- [ ] Confirm order status management.
+- [ ] Check customer notification functionality.
+
+### Security and performance checks
+
+- [ ] Verify the SSL certificate.
+- [ ] Review HTTP security headers.
+- [ ] Confirm XML-RPC restrictions.
+- [ ] Review Wordfence status.
+- [ ] Confirm backup configuration.
+- [ ] Review server error logs.
+- [ ] Check caching and compression.
+- [ ] Check website performance on mobile and desktop.
+
+Testing must use authorized test accounts and controlled test data. Do not submit real payments or create unnecessary customer orders during routine verification.
+
+## 11. Maintenance and Operational Notes
+
+The website requires continued maintenance after deployment.
+
+Recommended activities include:
+
+- Monitoring SSL certificate validity.
+- Updating WordPress, plugins and themes after compatibility checks.
+- Maintaining secure database backups.
+- Reviewing security alerts.
+- Monitoring website availability.
+- Testing contact and notification delivery.
+- Reviewing customer order functionality.
+- Monitoring disk usage and server resources.
+
+## 12. Deployment Limitations and Outstanding Verification
+
+The following operational details require confirmation before they can be reported as completed:
+
+- Exact hosting provider and cPanel document root.
+- Database hostname and production database account configuration.
+- Successful scheduled backup execution.
+- Successful database and file restoration test.
+- Wordfence scan completion.
+- WordPress cron execution.
+- Email delivery reliability under production conditions.
+
+These items should only be marked as verified after evidence has been collected.
+
+---
+
+**Project:** Tina's Cake Haven
+**Course:** BIT 2103 – Internet Technologies & Advanced Web Development
+**Institution:** Mountains of the Moon University
+**Live website:** https://tinascakehaven.noscamcoin.org/
