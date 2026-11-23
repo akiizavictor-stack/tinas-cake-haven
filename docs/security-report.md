@@ -120,3 +120,76 @@ Live and source implementations include or generate:
 - Confirm hosting account security and database least privilege.
 - Confirm live email settings and notification delivery.
 
+## Security Maintenance and Recommendations
+
+The following actions are recommended to maintain the security of Tina's Cake Haven.
+
+### 1. Administrator account protection
+
+- Use individual accounts for authorized staff instead of sharing one administrator account.
+- Use strong, unique passwords.
+- Enable two-factor authentication for all staff accounts and verify that it works.
+- Remove or disable accounts belonging to former staff.
+- Assign only the capabilities required for each staff member's duties.
+
+### 2. WordPress and plugin maintenance
+
+- Install WordPress security updates promptly after checking compatibility.
+- Keep the custom theme and plugin under version control.
+- Update third-party plugins from trusted sources.
+- Remove unused plugins and themes only after confirming that they are not required.
+- Back up the website before significant updates.
+
+### 3. Backup and recovery
+
+- Configure regular website and database backups.
+- Store backups in a secure location separate from the hosting account.
+- Restrict access to backup files.
+- Define an appropriate backup retention period.
+- Perform periodic restoration tests in a safe environment.
+
+A backup should not be considered reliable until restoration has been successfully tested.
+
+### 4. Security monitoring
+
+- Review WordPress and hosting security alerts.
+- Run authorized malware and vulnerability scans.
+- Investigate unexpected administrator accounts, file changes and login activity.
+- Monitor PHP, web-server and WordPress error logs.
+- Document security incidents and corrective actions.
+
+Wordfence scan results and firewall status should only be reported as verified after checking the live dashboard.
+
+### 5. Customer data protection
+
+- Restrict access to customer contact details, order records and payment evidence.
+- Do not share customer information through public GitHub repositories.
+- Avoid downloading live customer data to unsecured computers.
+- Use test records when demonstrating or testing the application.
+- Remove temporary files containing sensitive information when they are no longer required.
+
+### 6. Hosting and database security
+
+- Use strong hosting-account credentials and enable available account-level MFA.
+- Use a database account with only the permissions required by the application.
+- Keep database credentials outside public source-code repositories.
+- Maintain valid HTTPS configuration and monitor certificate expiry.
+- Confirm that sensitive files and backup archives cannot be downloaded publicly.
+
+### 7. Security review schedule
+
+| Frequency | Recommended activity |
+|---|---|
+| Weekly | Review important alerts and unexpected login activity |
+| Monthly | Check WordPress, theme and plugin updates |
+| Monthly | Review administrator and staff accounts |
+| Monthly | Confirm backup completion |
+| Quarterly | Perform an authorized security scan |
+| Quarterly | Test backup restoration |
+| After major updates | Recheck ordering, account and payment-related security controls |
+
+## Security Assessment Conclusion
+
+The project includes several security controls in its WordPress application, custom plugin and hosting configuration. However, some operational protections still require live verification, particularly two-factor authentication, Wordfence scanning, backup restoration and server file permissions.
+
+Security should therefore be treated as an ongoing maintenance responsibility rather than a one-time installation task.
