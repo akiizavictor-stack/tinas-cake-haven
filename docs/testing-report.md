@@ -33,3 +33,53 @@ No submission or live customer-data modification was performed. Results below di
 
 Source inspection cannot prove runtime database or staff behavior. Live testing was limited to safe public HTTP requests. No account credentials, customer records or payment details were used.
 
+## Test Coverage Summary
+
+The tests in this report cover several different levels of verification:
+
+| Verification level | Coverage |
+|---|---|
+| Public website availability | Live HTTP response inspection |
+| Security configuration | Response headers and source inspection |
+| Application logic | PHP source-code inspection |
+| Database structure | Table definitions and relationship inspection |
+| Order and payment processing | Implementation inspected; runtime behavior not tested |
+| Customer account functionality | Implementation inspected; runtime behavior not tested |
+| Responsive presentation | CSS inspected; physical device testing not performed |
+
+A source-code inspection result must not be interpreted as proof that a feature works correctly in a live transaction.
+
+## Recommended Regression Testing Procedure
+
+After an authorized update to the website, the following checks should be performed in a safe test environment:
+
+1. Confirm that the homepage and main navigation load.
+2. Open the product catalogue and confirm that product information is displayed correctly.
+3. Open the ordering page and check that the form loads.
+4. Validate required fields using safe test information.
+5. Confirm that invalid order submissions are rejected.
+6. Test order creation using an authorized test environment and test data.
+7. Confirm that payment submissions remain pending until staff verification.
+8. Test payment verification and rejection using authorized test records.
+9. Confirm that customers can access the permitted order-tracking information.
+10. Check customer account access and order history.
+11. Review relevant PHP and WordPress logs for errors.
+12. Check the website on both desktop and mobile screen sizes.
+
+## Test Evidence and Reporting
+
+For future testing sessions:
+
+- Record the test date and environment.
+- Identify the feature and procedure tested.
+- Record the expected and actual results.
+- Assign a clear status: Passed, Failed, Not tested or Unverified.
+- Keep screenshots or other evidence where appropriate.
+- Do not include customer passwords, payment credentials or private customer information in test evidence.
+- Re-test affected features after fixing a reported defect.
+
+## Overall Assessment
+
+The project has documented implementation evidence and successful public availability checks. Several important application functions have been inspected in source code but still require controlled runtime testing before they can be declared fully tested.
+
+This report should be updated whenever additional tests are completed.
