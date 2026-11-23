@@ -1,0 +1,80 @@
+# Repository allowlist
+# Track only project documentation and the two custom application directories.
+*
+
+!README.md
+!.gitignore
+
+# Documentation
+!/docs/
+!/docs/**
+
+# WordPress content allowlist
+!/wp-content/
+/wp-content/*
+
+!/wp-content/themes/
+/wp-content/themes/*
+!/wp-content/themes/tinas-cake-haven/
+!/wp-content/themes/tinas-cake-haven/**
+
+!/wp-content/plugins/
+/wp-content/plugins/*
+!/wp-content/plugins/tinas-cake-haven-core/
+!/wp-content/plugins/tinas-cake-haven-core/**
+
+# WordPress credentials and local configuration
+/wp-config.php
+/wp-config*.php
+/wp-config-*.php
+/.env
+/.env.*
+
+# Database dumps and backups
+*.sql
+*.sql.gz
+*.sqlite
+*.sqlite3
+*.bak
+*.backup
+*.old
+*.bak-tch-*
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.dump
+
+# WordPress uploads and private customer files
+/wp-content/uploads/
+/wp-content/updraft/
+
+# Cache, runtime and temporary files
+*.log
+*.tmp
+*.temp
+debug.log
+error_log
+.phpunit.result.cache
+/wp-content/cache/
+/wp-content/upgrade/
+/wp-content/w3tc-config/
+/wp-content/advanced-cache.php
+/wp-content/wp-cache-config.php
+/tmp/
+/temp/
+
+# IDE and operating-system files
+.vscode/
+.idea/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# Temporary inspection and cleanup scripts
+/tch-cleanup2.php
+/tch-inspect.php
+/tch-test-gallery.php
+

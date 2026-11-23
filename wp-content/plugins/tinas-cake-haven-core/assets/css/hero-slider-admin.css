@@ -1,0 +1,12 @@
+/* Hero Slider admin screen */
+.tch-hero-slider-admin .tch-slide-row td { vertical-align: middle; }
+.tch-hero-slider-admin .tch-slide-order { white-space: nowrap; }
+.tch-hero-slider-admin .tch-slide-order .button { width: 34px; height: 32px; padding: 0 6px; line-height: 1; margin-right: 2px; }
+.tch-hero-slider-admin .tch-slide-thumb { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; display: block; border: 1px solid #e0e0e0; }
+.tch-hero-slider-admin .tch-no-image { display: inline-block; width: 80px; height: 80px; line-height: 80px; text-align: center; background: #f6f7f7; border: 1px dashed #c3c4c7; border-radius: 8px; color: #646970; font-size: .8rem; }
+.tch-hero-slider-admin .tch-slide-id-cell code { font-size: .85rem; }
+.tch-hero-slider-admin .tch-id-default { background: #fff7e6; color: #996600; }
+.tch-hero-slider-admin .tch-slide-actions .button { margin: 0 2px 2px 0; }
+.tch-hero-slider-admin #tch-hero-slides { background: #fff; }
+.tch-hero-slider-admin .tch-move-up:active,
+.tch-hero-slider-admin .tch-move-down:active { transform: translateY(1px); }
