@@ -125,3 +125,69 @@ Open **Cake Orders → Business settings** to maintain:
 
 Do not enter passwords or secrets in public business settings.
 
+## Customer Website User Guide
+
+This section explains how customers can browse products, place orders, submit payment details and track their orders.
+
+### 1. Browse available products
+
+1. Open the Tina's Cake Haven website: https://tinascakehaven.noscamcoin.org/
+2. Navigate to the products or menu section.
+3. Browse the available cakes, cupcakes and cookies.
+4. Review product descriptions, sizes and displayed prices.
+
+### 2. Place an order
+
+1. Open the **Order Online** page.
+2. Select the product you want to order.
+3. Choose the available size, flavour and quantity where applicable.
+4. Provide the requested contact and fulfilment information.
+5. For customized birthday cakes, provide the design details and required date.
+6. Review the order information before submitting.
+7. Submit the order and retain the order reference displayed by the website.
+
+Customized birthday cake orders require at least 24 hours' notice.
+
+### 3. Submit Mobile Money payment details
+
+1. Follow the Mobile Money payment instructions displayed by the website.
+2. Make the payment using the provided business payment details.
+3. Return to the order payment instructions or submission area.
+4. Enter the requested transaction reference and payment information.
+5. Submit the payment details for verification.
+
+**Important:** Payment is not automatically confirmed by the website. The business owner or authorized staff must verify the transaction against the actual Mobile Money account.
+
+Customers should wait for confirmation before assuming that payment has been accepted.
+
+### 4. Track an order
+
+1. Open the **Order Tracking** page.
+2. Enter the requested order identification details.
+3. Submit the tracking request.
+4. Review the displayed order status and available updates.
+
+Customers should use the order reference associated with their submitted order.
+
+### 5. Access customer accounts and order history
+
+Customers can use the **My Account** and **My Orders** pages to access the account features provided by the website.
+
+Depending on account status and available features, customers can review their recent orders and follow order progress.
+
+Keep account login details private and do not share passwords with other people.
+
+### 6. Contact the business
+
+For questions about cake designs, payments, collection or delivery, customers can use the contact information and communication links provided on the website.
+
+When making an enquiry about an existing order, provide the relevant order reference without sharing passwords or other confidential account information.
+
+### Customer guidance
+
+- Check product sizes, flavours and prices before ordering.
+- Provide accurate contact information.
+- Allow at least 24 hours for customized birthday cake orders.
+- Keep the order reference for tracking.
+- Wait for manual payment verification.
+- Contact the business if an order or payment status needs clarification.

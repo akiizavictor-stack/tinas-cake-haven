@@ -129,3 +129,53 @@ erDiagram
 
 The diagram distinguishes logical WordPress relationships from SQL foreign keys. Only relationships explicitly present in source or schema are shown.
 
+
+## Data Integrity and Relationship Behaviour
+
+The database uses primary keys, unique constraints and foreign keys to maintain the consistency of stored information.
+
+### Primary keys and unique constraints
+
+- Each custom table has an `id` primary key to identify individual records.
+- The order reference and submission key in the orders table have unique constraints to prevent duplicate values.
+- The flavour name is unique in the flavours table.
+- The custom requests table has a unique `order_id`, allowing at most one custom request record per order.
+
+### Foreign key behaviour
+
+The custom database schema defines foreign keys for relationships that it manages directly.
+
+- Deleting an order cascades to its associated order items, custom request, payments and status history.
+- Deleting a payment cascades to its associated payment log records.
+- If a cake size or flavour record is deleted, the corresponding optional reference in an order item is set to NULL.
+- Product IDs and WordPress user IDs are logical references. They are not declared as foreign keys in the custom schema.
+
+These behaviours help maintain consistency between related custom records. Administrators should exercise caution when deleting records because cascading deletion can remove associated records.
+
+### Order and payment data consistency
+
+The orders table stores the main order information, while order items store individual products, quantities and line totals.
+
+The payments table records payment submissions and staff payment records. The payment log preserves payment-state changes, while the status history records changes to an order's status.
+
+This separation supports order tracking and payment verification without combining all operational records into one table.
+
+## Database Maintenance and Protection
+
+The following practices should be followed when maintaining the database:
+
+1. Back up the database before performing structural changes or major updates.
+2. Never publish database credentials, password hashes, customer records or payment evidence.
+3. Use the WordPress database API and the plugin's approved table-name helper when accessing custom tables.
+4. Use prepared database queries for values supplied by users.
+5. Validate and sanitize submitted data before storing it.
+6. Restrict database and administrative access to authorized personnel.
+7. Test database migrations and updates in a local or staging environment before applying them to the live website.
+8. Periodically verify that backups can be restored successfully.
+
+### Database Documentation Limitations
+
+This document describes the custom tables and relationships identified in the project documentation and implementation.
+
+It is not a complete SQL schema export. Exact column types, default values, indexes, storage engines and all constraint definitions should be confirmed against the installed database schema before making structural changes.
+
