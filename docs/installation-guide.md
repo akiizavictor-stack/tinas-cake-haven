@@ -108,3 +108,21 @@ This guide does not instruct or recommend changing plugins/themes during setup. 
 - Do not expose private customer data.
 - `.gitignore` only controls Git tracking; it does not remove local files or protect a manually prepared ZIP.
 
+## Post-installation verification checklist
+
+After completing the local setup, verify the following:
+
+- [ ] The WAMP services are running successfully.
+- [ ] The local website homepage loads without PHP errors.
+- [ ] WordPress administrator dashboard is accessible.
+- [ ] The Tina's Cake Haven theme is active.
+- [ ] The Tina's Cake Haven Core plugin is active.
+- [ ] Product pages display the available cake products and prices.
+- [ ] The ordering page loads correctly.
+- [ ] Order tracking and customer account pages load.
+- [ ] Navigation links and contact information work.
+- [ ] No live customer information or production credentials are present in the local environment.
+
+Record any failed checks and investigate them before declaring the installation complete.
+
+A successful page load alone does not confirm that all ordering, payment and account functions are working. Test those functions separately using safe test data.
