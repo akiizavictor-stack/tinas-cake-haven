@@ -93,3 +93,64 @@ The public order view uses a signed guest token for authorized navigation and pr
 
 Verified payments update paid amounts and payment status. Staff mark production and fulfilment complete, or cancel the order if necessary. Cancelled orders should not be accepted for new payment submissions.
 
+## 11. Exception Handling and Operational Guidelines
+
+The following procedures guide authorized staff when an order or payment does not follow the normal workflow.
+
+### Duplicate order submissions
+
+- Check whether the customer has already submitted an order before creating another record.
+- Compare the customer phone number, order details and submission time.
+- Confirm the correct order reference with the customer.
+- Avoid processing the same request twice.
+
+### Incorrect customer information
+
+- Contact the customer using the available contact details.
+- Confirm the correct phone number, delivery or collection choice and required date.
+- Authorized staff should correct information only through supported administrative functions.
+- Do not directly edit database records unless following an approved recovery procedure.
+
+### Payment not received
+
+- Keep the payment unverified until the transaction is confirmed in the actual Mobile Money account.
+- Ask the customer to confirm the transaction reference and payment details.
+- Do not mark an order as paid based only on a screenshot or customer statement.
+
+### Rejected payment submissions
+
+- Provide a clear rejection reason through the available verification process.
+- Explain any discrepancy to the customer.
+- Allow the customer to provide corrected payment information where the system permits another submission.
+- Keep the payment audit history intact.
+
+### Partial payments and outstanding balances
+
+- Compare the amount received with the order total and required deposit.
+- Record and verify additional payments using the supported payment workflow.
+- Check the remaining balance before marking the order financially settled.
+- Do not assume that an outstanding balance has been paid.
+
+### Changes to orders and cancellations
+
+- Confirm requested changes directly with the customer.
+- Check whether the order has already entered preparation or production.
+- Use the supported administrative order-status controls.
+- Explain any effect on the collection or delivery date.
+- Do not promise automatic refunds or reversals; handle refunds separately through an authorized business process.
+
+### Orders that cannot be fulfilled
+
+- Contact the customer as soon as the problem is identified.
+- Explain why the requested date or design cannot be accommodated.
+- Agree on an alternative arrangement where possible.
+- Update the order through the available administrative controls.
+
+### Record keeping
+
+- Retain the order reference when discussing an order.
+- Keep payment verification and status history accurate.
+- Restrict customer information to authorized staff.
+- Never publish customer payment evidence, phone numbers or private order details in public documentation.
+
+These guidelines supplement the implemented order-management functions. They do not imply that the website automatically performs refunds, rescheduling or dispute resolution.
